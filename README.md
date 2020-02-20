@@ -1,2 +1,2 @@
-# unity-game
-RPG game developed with Unity.
+# Godot game
+Game developed with Godot.
