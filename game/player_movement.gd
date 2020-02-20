@@ -19,12 +19,14 @@ func get_input():
 	if attack:
 		attacking = true
 		$AnimatedSprite.play("attack")
+		$AttackSound.play();
 		$AnimatedSprite.connect("animation_finished", self, "_stop_attack")
 		
 	if !attacking:
 		if jump and is_on_floor():
 			jumping = true
 			velocity.y = jump_speed
+			$JumpSound.play();
 		if right:
 			velocity.x += run_speed
 			$AnimatedSprite.set_flip_h(false)
