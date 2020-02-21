@@ -3,6 +3,7 @@ extends KinematicBody2D
 export (int) var run_speed = 300
 export (int) var jump_speed = -700
 export (int) var gravity = 1500
+export (int) var damage = 10
 
 var velocity = Vector2()
 var floor_normal = Vector2(0, -1)
