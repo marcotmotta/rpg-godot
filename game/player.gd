@@ -50,11 +50,11 @@ func player_attack_start():
 	attacking = true
 	$AnimatedSprite.play("attack")
 	$AttackSound.play();
-	$SwordHit.get_node("CollisionShape2D").disabled = false
+	$SwordHit/CollisionShape2D.disabled = false
 
 	$AnimatedSprite.connect("animation_finished", self, "player_attack_stop")
 
 func player_attack_stop():
 	attacking = false
-	$SwordHit.get_node("CollisionShape2D").disabled = true
+	$SwordHit/CollisionShape2D.disabled = true
 	$AnimatedSprite.disconnect("animation_finished", self, "player_attack_stop")

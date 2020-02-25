@@ -85,7 +85,7 @@ animations = [ {
 radius = 38.969
 height = 51.077
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.054902, 0.376471, 0.517647, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -94,7 +94,7 @@ border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0.588235 )
 border_width_left = 2
 border_width_top = 2
@@ -110,15 +110,15 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "attack",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 22 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
 "name": "run",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "attack",
+"speed": 20.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=8]
@@ -175,6 +175,7 @@ rotation = 3.14159
 scale = Vector2( 0.25, -0.25 )
 frames = SubResource( 3 )
 animation = "idle"
+frame = 16
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
@@ -186,8 +187,8 @@ margin_left = 212.0
 margin_top = 550.0
 margin_right = 812.0
 margin_bottom = 570.0
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
 value = 50.0
 percent_visible = false
 __meta__ = {
@@ -202,7 +203,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 8
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
