@@ -6,7 +6,7 @@ export (int) var gravity = 1500
 export (int) var damage = 10
 
 var velocity = Vector2()
-var floor_normal = Vector2(0, -1)
+var floor_normal = Vector2.UP
 var jumping = false
 var attacking = false
 
@@ -49,12 +49,11 @@ func _physics_process(delta):
 func player_attack_start():
 	attacking = true
 	$AnimatedSprite.play("attack")
-	$AttackSound.play();
-	$SwordHit.get_node("CollisionShape2D").disabled = false
-
+	$AttackSound.play()
+	$SwordHit/CollisionShape2D.disabled = false
 	$AnimatedSprite.connect("animation_finished", self, "player_attack_stop")
 
 func player_attack_stop():
 	attacking = false
-	$SwordHit.get_node("CollisionShape2D").disabled = true
+	$SwordHit/CollisionShape2D.disabled = true
 	$AnimatedSprite.disconnect("animation_finished", self, "player_attack_stop")
