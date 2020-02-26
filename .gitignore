@@ -13,4 +13,6 @@ data_*/
 # Misc
 *.zip
 *.rar
-*.import
+*.wav.import
+*.png.import
+*.ceol
