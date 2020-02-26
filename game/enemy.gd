@@ -22,12 +22,12 @@ var attacking = false
 func _ready():
 	randomize()
 	$AnimatedSprite.set_flip_h(false)
-	get_node("/root/Node2D/EnemyLifeBar").max_value = max_health
-	get_node("/root/Node2D/EnemyLifeBar").value = health
+	$EnemyLifeBar.max_value = max_health
+	$EnemyLifeBar.value = health
 
 func _physics_process(delta):
 	velocity.x = 0
-	get_node("/root/Node2D/EnemyLifeBar").value = health
+	$EnemyLifeBar.value = health
 	velocity.y += gravity * delta
 
 	if !attacking:
@@ -39,14 +39,16 @@ func _physics_process(delta):
 				velocity.x = direction[0] * run_speed
 				if(direction == Vector2.LEFT):
 					$AnimatedSprite.set_flip_h(false)
+					$AttackArea/CollisionShape2D.position = Vector2(-abs($AttackArea/CollisionShape2D.position.x), $AttackArea/CollisionShape2D.position.y)
 				else:
 					$AnimatedSprite.set_flip_h(true)
+					$AttackArea/CollisionShape2D.position = Vector2(abs($AttackArea/CollisionShape2D.position.x), $AttackArea/CollisionShape2D.position.y)
 				$AnimatedSprite.play("run")
 			ATTACK:
 				attacking = true
 				$AnimatedSprite.play("attack")
 				$AttackSound.play()
-				#$SwordHit/CollisionShape2D.disabled = false
+				$AttackArea/CollisionShape2D.disabled = false
 				$AnimatedSprite.connect("animation_finished", self, "player_attack_stop")
 
 	velocity = move_and_slide(velocity, floor_normal)
@@ -56,11 +58,16 @@ func choose(array):
 	return array.front()
 
 func _on_Timer_timeout():
-	$Timer.wait_time = 1
+	$Timer.wait_time = choose([0.5, 1])
 	state = choose([CHANGE_DIRECTION, MOVE, ATTACK])
 	
 func player_attack_stop():
 	attacking = false
-	#$SwordHit/CollisionShape2D.disabled = true
+	$AttackArea/CollisionShape2D.disabled = true
 	$AnimatedSprite.disconnect("animation_finished", self, "player_attack_stop")
 	state = MOVE
+
+
+func _on_AttackArea_body_entered(body):
+	if(body.is_in_group('Player')):
+		body.health -= damage

@@ -3,12 +3,20 @@ extends KinematicBody2D
 export (int) var run_speed = 300
 export (int) var jump_speed = -700
 export (int) var gravity = 1500
+export (int) var max_health = 100
 export (int) var damage = 10
 
 var velocity = Vector2()
 var floor_normal = Vector2.UP
 var jumping = false
 var attacking = false
+
+onready var health_bar = get_node('/root/Node2D/PlayerLifeBar')
+onready var health = max_health
+
+func _ready():
+	health_bar.max_value = max_health
+	health_bar.value = health
 
 func get_input():
 	velocity.x = 0
@@ -40,6 +48,7 @@ func get_input():
 				$AnimatedSprite.play("idle")
 
 func _physics_process(delta):
+	health_bar.value = health
 	get_input()
 	velocity.y += gravity * delta
 	if jumping and is_on_floor():
@@ -57,3 +66,12 @@ func player_attack_stop():
 	attacking = false
 	$SwordHit/CollisionShape2D.disabled = true
 	$AnimatedSprite.disconnect("animation_finished", self, "player_attack_stop")
+
+
+func _on_SwordHit_body_entered(body):
+	if body.is_in_group("Enemies"):
+		print(body.get_name())
+		body.health -= damage
+		print (body.health)
+	else:
+		print("Fail...")
