@@ -67,11 +67,6 @@ func player_attack_stop():
 	$SwordHit/CollisionShape2D.disabled = true
 	$AnimatedSprite.disconnect("animation_finished", self, "player_attack_stop")
 
-
 func _on_SwordHit_body_entered(body):
 	if body.is_in_group("Enemies"):
-		print(body.get_name())
 		body.health -= damage
-		print (body.health)
-	else:
-		print("Fail...")
