@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=2]
+[gd_scene load_steps=119 format=2]
 
 [ext_resource path="res://assets/Background/PNG/Battleground3/Bright/Battleground3.png" type="Texture" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
@@ -105,13 +105,21 @@
 [ext_resource path="res://assets/Sounds/menu_explosion.wav" type="AudioStream" id=103]
 [ext_resource path="res://global.gd" type="Script" id=104]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ProceduralSky" id=1]
+resource_local_to_scene = true
+sun_color = Color( 0.843137, 0.956863, 0.0470588, 1 )
+
+[sub_resource type="Environment" id=2]
+background_sky = SubResource( 1 )
+glow_enabled = true
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 584.06, 110.524 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 117.585, 329.92 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 61 ), ExtResource( 48 ), ExtResource( 51 ), ExtResource( 63 ), ExtResource( 60 ), ExtResource( 53 ), ExtResource( 59 ), ExtResource( 62 ), ExtResource( 64 ), ExtResource( 56 ), ExtResource( 65 ), ExtResource( 57 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 54 ), ExtResource( 58 ), ExtResource( 55 ) ],
 "loop": true,
@@ -134,13 +142,13 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 38.969
 height = 51.077
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.054902, 0.376471, 0.517647, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -149,7 +157,7 @@ border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0, 0, 0.588235 )
 border_width_left = 2
 border_width_top = 2
@@ -158,7 +166,7 @@ border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -176,14 +184,14 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=11]
 radius = 38.9695
 height = 51.0769
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 23.6335, 198.312 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.0431373, 0.807843, 0, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -192,7 +200,7 @@ border_width_bottom = 2
 border_color = Color( 0, 0, 0, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0, 0, 0, 0.588235 )
 border_width_left = 2
 border_width_top = 2
@@ -204,8 +212,11 @@ border_blend = true
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 104 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 512, 322.556 )
+position = Vector2( 512, 322 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 
@@ -217,21 +228,21 @@ volume_db = -15.0
 position = Vector2( 512.989, 585.241 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( 512, 50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2( -605.951, 220.072 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Wall2" type="StaticBody2D" parent="."]
 position = Vector2( 1722.39, 59.044 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
 position = Vector2( -605.951, 220.072 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Enemy" type="KinematicBody2D" parent="." groups=[
 "Enemies",
@@ -242,14 +253,14 @@ script = ExtResource( 66 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy"]
 rotation = 3.14159
 scale = Vector2( 0.25, -0.25 )
-frames = SubResource( 3 )
+frames = SubResource( 5 )
 animation = "throw"
 frame = 11
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 position = Vector2( 0, 9.777 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="Enemy"]
 autostart = true
@@ -259,7 +270,7 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/AttackArea"]
 position = Vector2( -70, 10 )
 scale = Vector2( 3, 5 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 disabled = true
 
 [node name="ThrowPosition" type="Position2D" parent="Enemy"]
@@ -274,8 +285,8 @@ margin_left = -75.0
 margin_top = -100.0
 margin_right = 75.0
 margin_bottom = -85.0
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 7 )
+custom_styles/fg = SubResource( 8 )
+custom_styles/bg = SubResource( 9 )
 value = 100.0
 percent_visible = false
 __meta__ = {
@@ -290,14 +301,14 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.25, 0.25 )
-frames = SubResource( 8 )
+frames = SubResource( 10 )
 animation = "idle"
-frame = 6
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 9.77673 )
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="SwordHit" type="Area2D" parent="Player"]
 scale = Vector2( 0.25, 0.25 )
@@ -305,7 +316,7 @@ scale = Vector2( 0.25, 0.25 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/SwordHit"]
 position = Vector2( 277.789, 65.1604 )
 scale = Vector2( 5, 1 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 disabled = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Player"]
@@ -321,8 +332,8 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 320.0
 margin_bottom = 45.0
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
 value = 100.0
 percent_visible = false
 __meta__ = {

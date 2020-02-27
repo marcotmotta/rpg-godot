@@ -16,3 +16,6 @@ data_*/
 *.wav.import
 *.png.import
 *.ceol
+
+# Test Projects
+/3d-test
