@@ -1,6 +1,6 @@
 # Godot game
 
-Prototype of an RPG/Action game made with the Godot Engine.
+Games made with the the Godot Engine.
 
 ## Tips
 
