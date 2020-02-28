@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
-export (int) var run_speed = 300
+export (int) var run_speed = 100
 export (int) var jump_speed = -500
-export (int) var gravity = 1500
+
+onready var global = get_node("/root/global")
 
 var velocity = Vector2()
-var floor_normal = Vector2.UP
 var jumping = false
 var attacking = false
 
 func _ready():
-	$AnimationPlayer.play("idle")
+	$AnimatedSprite.play("idle")
 
 func get_input():
 	velocity.x = 0
@@ -21,7 +21,7 @@ func get_input():
 
 	if !attacking:
 		if attack:
-			pass
+			attack_start()
 		else:
 			if jump and is_on_floor():
 				jumping = true
@@ -29,15 +29,28 @@ func get_input():
 			if right:
 				velocity.x += run_speed
 				$AnimatedSprite.set_flip_h(false)
-				$SwordHit.scale = Vector2(abs($SwordHit.scale.x), $SwordHit.scale.y)
 			if left:
 				velocity.x -= run_speed
 				$AnimatedSprite.set_flip_h(true)
-				$SwordHit.scale = Vector2(-abs($SwordHit.scale.x), $SwordHit.scale.y)
+	
+			if velocity.x != 0:
+				$AnimatedSprite.play("run")
+			else:
+				$AnimatedSprite.play("idle")
 
 func _physics_process(delta):
 	get_input()
-	velocity.y += gravity * delta
+	velocity.y += global.gravity * delta
 	if jumping and is_on_floor():
 		jumping = false
-	velocity = move_and_slide(velocity, floor_normal)
+	velocity = move_and_slide(velocity, global.floor_normal)
+
+func attack_start():
+	attacking = true
+	$AnimatedSprite.play("attack")
+	#$SwordHit/CollisionShape2D.disabled = false
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == 'attack':
+		attacking = false
+		$AnimatedSprite.play("idle")
