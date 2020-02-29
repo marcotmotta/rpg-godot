@@ -126,9 +126,9 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 84 ), ExtResource( 85 ), ExtResource( 82 ), ExtResource( 81 ), ExtResource( 79 ), ExtResource( 90 ), ExtResource( 87 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 89 ), ExtResource( 86 ), ExtResource( 80 ) ],
-"loop": true,
-"name": "run",
+"frames": [ ExtResource( 102 ), ExtResource( 93 ), ExtResource( 98 ), ExtResource( 101 ), ExtResource( 47 ), ExtResource( 95 ), ExtResource( 94 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 99 ), ExtResource( 91 ), ExtResource( 100 ) ],
+"loop": false,
+"name": "throw",
 "speed": 15.0
 }, {
 "frames": [ ExtResource( 76 ), ExtResource( 77 ), ExtResource( 71 ), ExtResource( 68 ), ExtResource( 72 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 73 ), ExtResource( 70 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 78 ) ],
@@ -136,9 +136,9 @@ animations = [ {
 "name": "attack",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 102 ), ExtResource( 93 ), ExtResource( 98 ), ExtResource( 101 ), ExtResource( 47 ), ExtResource( 95 ), ExtResource( 94 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 99 ), ExtResource( 91 ), ExtResource( 100 ) ],
-"loop": false,
-"name": "throw",
+"frames": [ ExtResource( 84 ), ExtResource( 85 ), ExtResource( 82 ), ExtResource( 81 ), ExtResource( 79 ), ExtResource( 90 ), ExtResource( 87 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 89 ), ExtResource( 86 ), ExtResource( 80 ) ],
+"loop": true,
+"name": "run",
 "speed": 15.0
 } ]
 
@@ -173,15 +173,15 @@ animations = [ {
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "run",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "attack",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=11]
@@ -303,7 +303,7 @@ script = ExtResource( 2 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 10 )
 animation = "idle"
-frame = 9
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
