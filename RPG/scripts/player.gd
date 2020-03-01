@@ -1,6 +1,15 @@
 extends KinematicBody2D
 
+# camera signal
 signal grounded_updated(is_grounded)
+
+enum {
+	IDLE,
+	MOVE,
+	ATTACK,
+	HURT,
+	DEAD
+}
 
 export (int) var run_speed = 200
 export (int) var jump_speed = -550
@@ -11,6 +20,8 @@ onready var global = get_node("/root/global")
 var velocity = Vector2()
 var jumping = false
 var attacking = false
+
+# camera variables
 var is_grounded
 var facing = 0
 
@@ -51,10 +62,13 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	velocity.y += global.gravity * delta
+	
 	velocity = move_and_slide(velocity, global.floor_normal)
+
 	if jumping and is_on_floor():
 		jumping = false
-	
+
+	# Camera configs
 	var was_grounded = is_grounded
 	is_grounded = is_on_floor()
 	
