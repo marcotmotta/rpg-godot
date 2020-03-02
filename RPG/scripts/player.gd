@@ -5,10 +5,11 @@ signal grounded_updated(is_grounded)
 
 export (int) var run_speed = 200
 export (int) var jump_speed = -550
-export (int) var health = 500
+export (int) var max_health = 100
 export (int) var damage = 40
 
 onready var global = get_node("/root/global")
+onready var health = max_health
 
 var jumping = false
 var blocking = false
@@ -74,9 +75,9 @@ func _physics_process(delta):
 	if was_grounded == null || is_grounded != was_grounded:
 		emit_signal("grounded_updated", is_grounded)
 
-func take_damage(damage):
+func take_damage(dmg):
 	if !blocking:
-		health -= damage
+		health -= dmg
 		
 		if health > 0:
 			$AnimatedSprite.play("hurt")

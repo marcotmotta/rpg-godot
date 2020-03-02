@@ -154,7 +154,9 @@ height = 24.0
 [sub_resource type="CircleShape2D" id=16]
 radius = 26.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
