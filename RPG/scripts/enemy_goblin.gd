@@ -75,17 +75,17 @@ func choose(array):
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == 'hurt':
-		$AttackRange/CollisionShape2D.set_deferred('disabled', false)
-		$VisionRange/CollisionShape2D.set_deferred('disabled', false)
 		state = IDLE
 		$AnimatedSprite.play("idle")
+		$VisionRange/CollisionShape2D.set_deferred('disabled', false)
+		$AttackRange/CollisionShape2D.set_deferred('disabled', false)
 	elif $AnimatedSprite.animation == 'death':
 		$HealthBar.visible = false
 		state = DEAD
-	elif $AnimatedSprite.animation == 'attack1':
-		$AnimatedSprite.play("attack2")
+	elif $AnimatedSprite.animation == 'attack_step_1':
+		$AnimatedSprite.play("attack_step_2")
 		$AttackDamage/CollisionShape2D.disabled = false
-	elif $AnimatedSprite.animation == 'attack2':
+	elif $AnimatedSprite.animation == 'attack_step_2':
 		$AttackDamage/CollisionShape2D.disabled = true
 		state = IDLE
 		$AnimatedSprite.play("idle")
@@ -118,13 +118,17 @@ func is_ground_dead():
 func _on_AttackRange_body_entered(body):
 	if body.is_in_group("Player"):
 		state = ATTACK
-		$AnimatedSprite.play("attack1")
+		$AnimatedSprite.play("attack_step_1")
 
 func _on_VisionRange_body_entered(body):
-	if body.is_in_group('Player'):
+	if body.is_in_group('Player') and state != ATTACK:
 		state = MOVE
 
 func _on_VisionRange_body_exited(body):
 	if state != DEAD and state != HURT:
 		state = IDLE
 		$AnimatedSprite.play("idle")
+
+func _on_AttackDamage_body_entered(body):
+	if(body.is_in_group('Player')):
+		body.take_damage(damage)
