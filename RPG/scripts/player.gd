@@ -36,21 +36,26 @@ func _input_process():
 
 		if attack:
 			attacking = true
+			blocking = false
 			$AnimatedSprite.play("attack_step_01")
 
 		else:
-			if block:
+			blocking = block
+			
+			if blocking:
 				$AnimatedSprite.play("block")
-				blocking  = true
+
 			else:
 				if jump and is_on_floor():
 					velocity.y = jump_speed
 					jumping = true
+
 				if right or left:
 					velocity.x += facing * run_speed
 					$AnimatedSprite.set_flip_h(facing < 0)
 					$AttackRange/CollisionShape2D.position.x = facing * abs($AttackRange/CollisionShape2D.position.x)
 					$AnimatedSprite.play("run")
+
 				else:
 					$AnimatedSprite.play("idle")
 
@@ -72,14 +77,15 @@ func _physics_process(delta):
 	if was_grounded == null || is_grounded != was_grounded:
 		emit_signal("grounded_updated", is_grounded)
 
-func take_damage(dmg):
-	if !blocking:
+func take_damage(dmg, enemy_direction):
+	if !blocking or $AnimatedSprite.flip_h == enemy_direction:
 		health -= dmg
 
 		if health > 0:
 			$AnimatedSprite.play("hurt")
 			taking_damage = true
 			attacking = false
+			blocking = false
 
 		else:
 			$AnimatedSprite.play("death")
@@ -100,5 +106,5 @@ func _on_AnimatedSprite_animation_finished():
 		taking_damage = false
 
 func _on_AttackRange_body_entered(body):
-	if(body.is_in_group('Enemies')):
+	if body.is_in_group('Enemies'):
 		body.take_damage(damage)

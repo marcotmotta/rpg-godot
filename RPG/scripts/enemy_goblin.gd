@@ -130,5 +130,5 @@ func _on_VisionRange_body_exited(body):
 		$AnimatedSprite.play("idle")
 
 func _on_AttackDamage_body_entered(body):
-	if(body.is_in_group('Player')):
-		body.take_damage(damage)
+	if body.is_in_group('Player'):
+		body.take_damage(damage, $AnimatedSprite.flip_h)
