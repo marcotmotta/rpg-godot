@@ -5,3 +5,7 @@ const gravity = 1500
 
 func _ready():
 	pass # Replace with function body.
+
+func choose(array):
+	array.shuffle()
+	return array.front()

@@ -39,7 +39,7 @@ func _physics_process(delta):
 		IDLE:
 			pass
 		CHANGE_DIRECTION:
-			direction = choose([Vector2.RIGHT, Vector2.LEFT])
+			direction = global.choose([Vector2.RIGHT, Vector2.LEFT])
 			state = MOVE
 		MOVE:
 			for character in $VisionRange.get_overlapping_bodies():
@@ -68,10 +68,6 @@ func _physics_process(delta):
 				is_ground_dead()
 
 	velocity = move_and_slide(velocity, global.floor_normal)
-
-func choose(array):
-	array.shuffle()
-	return array.front()
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == 'hurt':
@@ -115,11 +111,6 @@ func is_ground_dead():
 		$AttackRange.queue_free()
 		$AttackDamage.queue_free()
 
-func _on_AttackRange_body_entered(body):
-	if body.is_in_group("Player"):
-		state = ATTACK
-		$AnimatedSprite.play("attack_step_1")
-
 func _on_VisionRange_body_entered(body):
 	if body.is_in_group('Player') and state != ATTACK:
 		state = MOVE
@@ -128,6 +119,11 @@ func _on_VisionRange_body_exited(body):
 	if state != DEAD and state != HURT:
 		state = IDLE
 		$AnimatedSprite.play("idle")
+
+func _on_AttackRange_body_entered(body):
+	if body.is_in_group("Player"):
+		state = ATTACK
+		$AnimatedSprite.play("attack_step_1")
 
 func _on_AttackDamage_body_entered(body):
 	if body.is_in_group('Player'):

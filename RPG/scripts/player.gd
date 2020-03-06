@@ -8,6 +8,8 @@ export (int) var jump_speed = -550
 export (int) var max_health = 100
 export (int) var damage = 40
 
+const HEALTH_BAR_COLOR = "00910f"
+
 onready var global = get_node("/root/global")
 onready var health = max_health
 
@@ -22,6 +24,10 @@ var is_grounded
 var facing = 0
 
 func _ready():
+	$CanvasLayer/HealthBar.max_value = max_health
+	$CanvasLayer/HealthBar.value = health
+	$CanvasLayer/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
+
 	$AnimatedSprite.play("idle")
 
 func _input_process():
@@ -60,6 +66,8 @@ func _input_process():
 					$AnimatedSprite.play("idle")
 
 func _physics_process(delta):
+	$CanvasLayer/HealthBar.value = health
+
 	# Camera configs.
 	var was_grounded = is_grounded
 	is_grounded = is_on_floor()
@@ -80,6 +88,7 @@ func _physics_process(delta):
 func take_damage(dmg, enemy_direction):
 	if !blocking or $AnimatedSprite.flip_h == enemy_direction:
 		health -= dmg
+		$CanvasLayer/HealthBar.get("custom_styles/fg").set_bg_color(Color.darkgray)
 
 		if health > 0:
 			$AnimatedSprite.play("hurt")
@@ -102,8 +111,10 @@ func _on_AnimatedSprite_animation_finished():
 		attacking = false
 
 	elif $AnimatedSprite.animation == 'hurt':
+		$CanvasLayer/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
 		$AnimatedSprite.play("idle")
 		taking_damage = false
+		
 
 func _on_AttackRange_body_entered(body):
 	if body.is_in_group('Enemies'):
