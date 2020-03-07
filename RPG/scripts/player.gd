@@ -115,6 +115,10 @@ func _on_AnimatedSprite_animation_finished():
 		$AnimatedSprite.play("idle")
 		taking_damage = false
 
+	elif $AnimatedSprite.animation == 'death':
+		var death_screen = preload("res://scenes/DeathScreen.tscn")
+		get_parent().add_child(death_screen.instance())
+
 func _on_AttackRange_body_entered(body):
 	if body.is_in_group('Enemies'):
 		body.take_damage(damage)

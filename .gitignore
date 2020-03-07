@@ -17,3 +17,6 @@ data_*/
 
 # Test Projects
 /3d-test
+
+# Build
+/build
