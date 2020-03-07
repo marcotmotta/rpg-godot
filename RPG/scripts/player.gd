@@ -24,9 +24,9 @@ var is_grounded
 var facing = 0
 
 func _ready():
-	$CanvasLayer/HealthBar.max_value = max_health
-	$CanvasLayer/HealthBar.value = health
-	$CanvasLayer/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
+	$GUI/HealthBar.max_value = max_health
+	$GUI/HealthBar.value = health
+	$GUI/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
 
 	$AnimatedSprite.play("idle")
 
@@ -66,7 +66,7 @@ func _input_process():
 					$AnimatedSprite.play("idle")
 
 func _physics_process(delta):
-	$CanvasLayer/HealthBar.value = health
+	$GUI/HealthBar.value = health
 
 	# Camera configs.
 	var was_grounded = is_grounded
@@ -88,7 +88,7 @@ func _physics_process(delta):
 func take_damage(dmg, enemy_direction):
 	if !blocking or $AnimatedSprite.flip_h == enemy_direction:
 		health -= dmg
-		$CanvasLayer/HealthBar.get("custom_styles/fg").set_bg_color(Color.darkgray)
+		$GUI/HealthBar.get("custom_styles/fg").set_bg_color(Color.darkgray)
 
 		if health > 0:
 			$AnimatedSprite.play("hurt")
@@ -111,7 +111,7 @@ func _on_AnimatedSprite_animation_finished():
 		attacking = false
 
 	elif $AnimatedSprite.animation == 'hurt':
-		$CanvasLayer/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
+		$GUI/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
 		$AnimatedSprite.play("idle")
 		taking_damage = false
 		

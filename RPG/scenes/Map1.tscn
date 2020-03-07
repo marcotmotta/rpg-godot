@@ -1,9 +1,9 @@
 [gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/tilesheet/tilesheet_01.png" type="Texture" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesheet/tilesheet_02.png" type="Texture" id=3]
-[ext_resource path="res://EnemyGoblin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/EnemyGoblin.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
