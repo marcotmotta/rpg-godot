@@ -114,7 +114,6 @@ func _on_AnimatedSprite_animation_finished():
 		$GUI/HealthBar.get("custom_styles/fg").set_bg_color(Color(HEALTH_BAR_COLOR))
 		$AnimatedSprite.play("idle")
 		taking_damage = false
-		
 
 func _on_AttackRange_body_entered(body):
 	if body.is_in_group('Enemies'):

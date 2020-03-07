@@ -16,12 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="RPG"
-run/main_scene="res://scenes/Map1.tscn"
+run/main_scene="res://scenes/DialogueBox.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 global="*res://scripts/global.gd"
+scene_changer="*res://scenes/SceneChanger.tscn"
 
 [input]
 
