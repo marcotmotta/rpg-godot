@@ -8,6 +8,7 @@ size = 25
 font_data = ExtResource( 2 )
 
 [node name="DialogueBox" type="CanvasLayer"]
+layer = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0, 0, 0, 0.784314 )
