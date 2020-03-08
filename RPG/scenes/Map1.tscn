@@ -567,6 +567,7 @@ volume_db = -15.0
 autoplay = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Torch" parent="." instance=ExtResource( 7 )]
@@ -587,8 +588,8 @@ position = Vector2( 4211.7, 621.375 )
 [node name="Torch6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4716.23, 622.832 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -252.102, 402.923 )
+[node name="Grave" type="Sprite" parent="."]
+position = Vector2( -118.408, 402.923 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 8 )
 [connection signal="finished" from="GameSong" to="." method="_on_GameSong_finished"]
