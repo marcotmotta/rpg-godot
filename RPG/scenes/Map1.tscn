@@ -567,7 +567,6 @@ volume_db = -15.0
 autoplay = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Torch" parent="." instance=ExtResource( 7 )]
