@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/torch.png-6e8cae3b023ece5d2095796306dc5f4b.stex"
+path="res://.import/Idle.png-0b404da19cf4875ce33287cfbe2ca4ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/torch.png"
-dest_files=[ "res://.import/torch.png-6e8cae3b023ece5d2095796306dc5f4b.stex" ]
+source_file="res://assets/characters/Enemies/Mushroom/Idle.png"
+dest_files=[ "res://.import/Idle.png-0b404da19cf4875ce33287cfbe2ca4ce.stex" ]
 
 [params]
 

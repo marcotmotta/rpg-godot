@@ -14,7 +14,7 @@ data_*/
 *.zip
 *.rar
 *.ceol
-/assets_projects
+*/assets_projects
 
 # Test Projects
 /3d-test

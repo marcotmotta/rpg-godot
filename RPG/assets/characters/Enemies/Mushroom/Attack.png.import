@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grave.png-25771b44ab48c9c8dfd944cccca5fe0f.stex"
+path="res://.import/Attack.png-072cdd4f1a09ee34bbec2f2856446b10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/grave.png"
-dest_files=[ "res://.import/grave.png-25771b44ab48c9c8dfd944cccca5fe0f.stex" ]
+source_file="res://assets/characters/Enemies/Mushroom/Attack.png"
+dest_files=[ "res://.import/Attack.png-072cdd4f1a09ee34bbec2f2856446b10.stex" ]
 
 [params]
 

@@ -87,53 +87,53 @@ region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 150, 150 )
+atlas = ExtResource( 3 )
+region = Rect2( 900, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 150, 0, 150, 150 )
+atlas = ExtResource( 3 )
+region = Rect2( 1050, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 300, 0, 150, 150 )
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 450, 0, 150, 150 )
+atlas = ExtResource( 9 )
+region = Rect2( 150, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 150, 150 )
+region = Rect2( 300, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 9 )
-region = Rect2( 150, 0, 150, 150 )
+region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=22]
 flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 300, 0, 150, 150 )
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=23]
 flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 450, 0, 150, 150 )
+atlas = ExtResource( 7 )
+region = Rect2( 150, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 900, 0, 150, 150 )
+atlas = ExtResource( 7 )
+region = Rect2( 300, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 1050, 0, 150, 150 )
+atlas = ExtResource( 7 )
+region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="SpriteFrames" id=26]
 animations = [ {
@@ -157,20 +157,20 @@ animations = [ {
 "name": "run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
-"name": "block",
-"speed": 5.0
+"name": "attack_step_02",
+"speed": 10.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
-"name": "attack_step_02",
-"speed": 10.0
+"name": "block",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=27]
@@ -215,6 +215,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 26 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
