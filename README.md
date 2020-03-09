@@ -1,6 +1,6 @@
 # Godot game
 
-Games made with the the Godot Engine.
+RPG game developed with the godot engine.
 
 ## Tips
 
