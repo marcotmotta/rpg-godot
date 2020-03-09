@@ -116,7 +116,6 @@ func _on_VisionRange_body_exited(body):
 func _on_AttackRange_body_entered(body):
 	if body.is_in_group("Player"):
 		state = ATTACK
-		print('aa')
 		$AnimatedSprite.play("attack_step_01")
 
 func _on_AttackDamage_body_entered(body):

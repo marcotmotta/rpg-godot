@@ -47,53 +47,53 @@ region = Rect2( 750, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 150, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 300, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 150, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 300, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 450, 0, 150, 150 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 900, 0, 150, 150 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 1050, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 150, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 300, 0, 150, 150 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
@@ -117,22 +117,22 @@ region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=22]
 flags = 4
-atlas = ExtResource( 7 )
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=23]
 flags = 4
-atlas = ExtResource( 7 )
+atlas = ExtResource( 4 )
 region = Rect2( 150, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
-atlas = ExtResource( 7 )
+atlas = ExtResource( 4 )
 region = Rect2( 300, 0, 150, 150 )
 
 [sub_resource type="AtlasTexture" id=25]
 flags = 4
-atlas = ExtResource( 7 )
+atlas = ExtResource( 4 )
 region = Rect2( 450, 0, 150, 150 )
 
 [sub_resource type="SpriteFrames" id=26]
@@ -148,19 +148,19 @@ animations = [ {
 "speed": 10.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": false,
-"name": "death",
+"loop": true,
+"name": "block",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "attack_step_02",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "death",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": false,
@@ -169,8 +169,8 @@ animations = [ {
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
-"name": "block",
-"speed": 5.0
+"name": "run",
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=27]
@@ -215,7 +215,6 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 26 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
@@ -228,9 +227,10 @@ visible = false
 position = Vector2( 0, -45.2201 )
 current = true
 smoothing_enabled = true
-drag_margin_left = 0.1
+smoothing_speed = 15.0
+drag_margin_left = 0.0
 drag_margin_top = 0.4
-drag_margin_right = 0.1
+drag_margin_right = 0.0
 drag_margin_bottom = 0.5
 editor_draw_drag_margin = true
 script = ExtResource( 5 )

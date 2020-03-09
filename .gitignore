@@ -15,6 +15,9 @@ data_*/
 *.rar
 *.ceol
 */assets_projects
+*/game
+*/assets/maps
+*/scenes/Hills
 
 # Test Projects
 /3d-test
