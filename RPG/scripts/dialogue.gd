@@ -22,7 +22,7 @@ func _input(event):
 			else:
 				# provisório
 				var scene_changer = get_node("/root/scene_changer")
-				scene_changer.change_scene("res://scenes/TestMap.tscn")
+				scene_changer.change_scene("res://scenes/Maps/TestMap.tscn")
 		else:
 			set_visible_characters(get_total_character_count())
 

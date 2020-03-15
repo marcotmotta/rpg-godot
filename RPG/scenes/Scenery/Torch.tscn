@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/scenery/light.png" type="Texture" id=1]
+[ext_resource path="res://assets/scenery/torch.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.00740741, 0.0148148, 0.437037 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.445313, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 7.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "light"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ) ]
+}
+
+[node name="Torch" type="Sprite"]
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0, -15 )
+amount = 32
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -25 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+color = Color( 1, 0.803922, 0.435294, 1 )
+energy = 0.8
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+autoplay = "light"
+anims/light = SubResource( 6 )
