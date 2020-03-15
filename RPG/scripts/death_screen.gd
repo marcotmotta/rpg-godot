@@ -16,5 +16,5 @@ func _on_Retry_gui_input(event):
 
 func _on_Menu_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
-		#enquanto n tem menu, esse botao quita
-		get_tree().quit()
+		var scene_changer = get_node("/root/scene_changer")
+		scene_changer.change_scene("res://scenes/Menu.tscn")
