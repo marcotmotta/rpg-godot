@@ -1,0 +1,279 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/tilesheet/env_ground.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sounds/scenery/rain.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/Scenery/TreeFall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scenery/light.png" type="Texture" id=5]
+[ext_resource path="res://scenes/Maps/thunder.gd" type="Script" id=6]
+[ext_resource path="res://sounds/scenery/thunder.wav" type="AudioStream" id=7]
+
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0.0884354, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0.0842285, 0.539063, 1 )
+
+[sub_resource type="GradientTexture" id=19]
+gradient = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+emission_shape = 2
+emission_box_extents = Vector3( 750, 0, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 1, 0 )
+spread = 10.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 800.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 1.0
+color = Color( 0.172549, 0.313726, 0.345098, 1 )
+
+[sub_resource type="Animation" id=20]
+resource_name = "thunder"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 5 ), Vector2( 0, 0 ), Vector2( 5, 5 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "env_ground.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 128, 48, 128, 32 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 5, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 6, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 7, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "env_ground.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 128, 80, 48 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 13 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 14 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 15 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 16 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="Polygon2D" parent="Background"]
+texture = SubResource( 19 )
+texture_rotation_degrees = -90.0
+polygon = PoolVector2Array( 0, 600, 1024, 600, 1024, 0, 0, 0 )
+
+[node name="Particles2D" type="Particles2D" parent="Background"]
+position = Vector2( 512, 0 )
+amount = 300
+process_material = SubResource( 17 )
+
+[node name="Thunder" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource( 7 )
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="Background/Thunder"]
+wait_time = 15.0
+autostart = true
+
+[node name="Light2D" type="Light2D" parent="Background/Thunder"]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 5 )
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Thunder/Light2D"]
+anims/thunder = SubResource( 20 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 851961, 0, 0, 851962, 0, 1, 851963, 0, 2, 851964, 0, 3, 851965, 0, 4, 851966, 0, 5, 851967, 0, 6, 786432, 0, 7, 786433, 0, 0, 786434, 0, 1, 786435, 0, 2, 786436, 0, 3, 786437, 0, 4, 786438, 0, 5, 786439, 0, 6, 786440, 0, 7, 786441, 0, 0, 786442, 0, 1, 786443, 0, 2, 786444, 0, 3, 786445, 0, 4, 786446, 0, 5, 786447, 0, 6, 786448, 0, 7, 786449, 0, 0, 786450, 0, 1, 786451, 0, 2, 786452, 0, 3, 786453, 0, 4, 786454, 0, 5, 786455, 0, 6, 786456, 0, 7, 786457, 0, 3, 786458, 0, 4, 786459, 0, 5, 786460, 0, 6, 786461, 0, 7, 786462, 0, 0, 786463, 0, 1, 786464, 0, 2, 786465, 0, 3, 786466, 0, 4, 786467, 0, 5, 786468, 0, 6, 786469, 0, 7, 917497, 0, 65536, 917498, 0, 65537, 917499, 0, 65538, 917500, 0, 65539, 917501, 0, 65540, 917502, 0, 65541, 917503, 0, 65542, 851968, 0, 65543, 851969, 0, 65536, 851970, 0, 65537, 851971, 0, 65538, 851972, 0, 65539, 851973, 0, 65540, 851974, 0, 65541, 851975, 0, 65542, 851976, 0, 65543, 851977, 0, 65536, 851978, 0, 65537, 851979, 0, 65538, 851980, 0, 65539, 851981, 0, 65540, 851982, 0, 65541, 851983, 0, 65542, 851984, 0, 65543, 851985, 0, 65536, 851986, 0, 65537, 851987, 0, 65538, 851988, 0, 65539, 851989, 0, 65540, 851990, 0, 65541, 851991, 0, 65542, 851992, 0, 65543, 851993, 0, 65539, 851994, 0, 65540, 851995, 0, 65541, 851996, 0, 65542, 851997, 0, 65543, 851998, 0, 65536, 851999, 0, 65537, 852000, 0, 65538, 852001, 0, 65539, 852002, 0, 65540, 852003, 0, 65541, 852004, 0, 65542, 852005, 0, 65543 )
+
+[node name="Rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
+
+[node name="TreeFall" parent="." instance=ExtResource( 4 )]
+position = Vector2( 838.6, 304.146 )
+z_index = -2
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 368.741, 274.717 )
+
+[node name="Light2D" type="Light2D" parent="Player"]
+visible = false
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 5 )
+shadow_enabled = true
+[connection signal="timeout" from="Background/Thunder/Timer" to="Background/Thunder" method="_on_Timer_timeout"]
