@@ -1,25 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/dialogue.gd" type="Script" id=1]
 [ext_resource path="res://fonts/OldNewspaperTypes.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 25
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.22449, 0.231293, 0.238095 )
+colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.784314 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
 font_data = ExtResource( 2 )
 
 [node name="DialogueBox" type="CanvasLayer"]
 layer = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0, 0, 0, 0.784314 )
-polygon = PoolVector2Array( 24, 576, 24, 464, 1000, 464, 1000, 576 )
+position = Vector2( -25.1803, -325.789 )
+scale = Vector2( 1.05805, 1.60727 )
+texture = SubResource( 2 )
+texture_rotation_degrees = -90.0
+polygon = PoolVector2Array( 23.7987, 576, 23.7987, 461.52, 991.614, 461.52, 991.614, 576 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Polygon2D"]
-margin_left = 40.0
-margin_top = 480.0
-margin_right = 984.0
-margin_bottom = 560.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = 54.0
+margin_top = 500.0
+margin_right = 961.0
+margin_bottom = 563.0
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_text = "aaaaa"
+text = "aaaaa"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

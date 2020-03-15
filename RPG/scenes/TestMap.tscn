@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://assets/tilesheet/tilesheet_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Torch.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://sounds/game_song.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/tilesheet/custom_tilesheet.png" type="Texture" id=7]
 [ext_resource path="res://scenes/EnemyMushroom.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Barrel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Chains.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -621,3 +624,12 @@ position = Vector2( 4716.23, 622.832 )
 
 [node name="Mushroom" parent="." instance=ExtResource( 8 )]
 position = Vector2( 618.36, 303.284 )
+
+[node name="Tree" parent="." instance=ExtResource( 9 )]
+position = Vector2( 432.657, 335.08 )
+
+[node name="Barrel" parent="." instance=ExtResource( 10 )]
+position = Vector2( 96.1796, 418.799 )
+
+[node name="Chains" parent="." instance=ExtResource( 11 )]
+position = Vector2( 248.431, 341.739 )
