@@ -1,11 +1,10 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://assets/tilesheet/tilesheet_01.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Scenery/Torch.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Characters/EnemyGoblin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Characters/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/tilesheet/tilesheet_02.png" type="Texture" id=5]
-[ext_resource path="res://sounds/game_song.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/tilesheet/custom_tilesheet.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Characters/EnemyMushroom.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Scenery/Tree.tscn" type="PackedScene" id=9]
@@ -596,10 +595,6 @@ scale = Vector2( 5, 5 )
 run_speed = 130
 max_health = 400
 damage = 20
-
-[node name="GameSong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -15.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
